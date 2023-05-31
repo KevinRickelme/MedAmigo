@@ -1,6 +1,8 @@
 package Models;
 
-public class Remedio {
+import java.io.Serializable;
+
+public class Remedio implements Serializable {
     public int Id;
     public String Nome;
     public int Intervalo;

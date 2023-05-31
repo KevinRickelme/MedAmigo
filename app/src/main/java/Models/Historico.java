@@ -1,4 +1,6 @@
 package Models;
 
-public class Historico {
+import java.io.Serializable;
+
+public class Historico implements Serializable {
 }
