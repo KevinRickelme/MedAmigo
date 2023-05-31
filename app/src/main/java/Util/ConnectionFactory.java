@@ -22,10 +22,10 @@ public class ConnectionFactory extends SQLiteOpenHelper {
                 "Nome VARCHAR(250))";
 
         String sql2 = "CREATE TABLE Remedios(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "NomeDoRemedio VARCHAR(250)," +
-                "Intervalo INTEGER)";
+                "Nome VARCHAR(250)," +
+                "Intervalo int)";
 
-        String sql3 = "CREATE TABLE Remedios(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
+        String sql3 = "CREATE TABLE Historico(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "NomeDoRemedio VARCHAR(250)," +
                 "DataDaDose DateTime)";
 

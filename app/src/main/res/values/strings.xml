@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MedAmigo</string>
+    <string name="Historico">Histórico</string>
+    <string name="Configuracoes">Configurações</string>
+    <string name="Sair">Sair</string>
+
 </resources>

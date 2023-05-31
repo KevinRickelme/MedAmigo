@@ -54,7 +54,7 @@ public class RemedioDAO {
             if(cursor != null && cursor.moveToLast()) {
                 remedio.Id = cursor.getInt(cursor.getColumnIndexOrThrow("Id"));
                 remedio.Nome = cursor.getString(cursor.getColumnIndexOrThrow("Nome"));
-                remedio.Intervalo = cursor.getInt(cursor.getColumnIndexOrThrow("Intevalo"));
+                remedio.Intervalo = cursor.getInt(cursor.getColumnIndexOrThrow("Intervalo"));
             }
             db.close();
             return remedio;

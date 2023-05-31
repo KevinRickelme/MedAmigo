@@ -52,7 +52,7 @@
         android:gravity="center_horizontal"
         android:hint="Digite aqui o nome do remédio"
         android:inputType="text"
-        android:maxLength="7"
+        android:maxLength="20"
         android:minHeight="48dp"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -100,11 +100,13 @@
         android:layout_width="180dp"
         android:layout_height="127dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/btnCadastrar"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.781"
+        app:layout_constraintVertical_bias="0.351"
         app:srcCompat="@drawable/cartela_remedio" />
 
     <Button
@@ -117,11 +119,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.91" />
-
+        app:layout_constraintVertical_bias="0.747" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

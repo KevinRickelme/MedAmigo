@@ -39,6 +39,7 @@
         android:layout_width="188dp"
         android:layout_height="208dp"
         android:backgroundTint="#FFFFFF"
+        android:onClick="abrirLista"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,20 +80,38 @@
         app:layout_constraintVertical_bias="0.361" />
 
     <TextView
-        android:id="@+id/txtQtdAgua"
+        android:id="@+id/txtGenerico"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Confirme se tomou a dose:"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/imgCopo"
+        app:layout_constraintBottom_toTopOf="@+id/imgButtonRemedios"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintVertical_bias="0.011" />
+
+    <TextView
+        android:id="@+id/txtNomeDoRemedio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Remédio: "
+        android:textAlignment="center"
+        android:textColor="@color/purple_200"
+        android:textSize="30sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/imgButtonRemedios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGenerico"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

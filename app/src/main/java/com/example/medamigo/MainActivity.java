@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import DAO.RemedioDAO;
 import DAO.UsuarioDAO;
+import Models.Remedio;
 import Models.Usuario;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,13 +29,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnIniciar = findViewById(R.id.btnIniciar);
+
         createNotificationChannel();
         usuarioDAO = new UsuarioDAO(this);
 
         btnIniciar.setText("Ver meus remédios");
 
         verificaSeTemCadastro();
-
+        verificaRemedioCadastrado();
         usuario = new Usuario();
         edtNome = findViewById(R.id.edtNome);
         btnIniciar = findViewById(R.id.btnIniciar);
@@ -59,31 +63,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnIniciar(View view) {
+        Intent it;
         if (usuarioDAO.hasData()) {
-            Intent it;
             UsuarioDAO usuarioDAO = new UsuarioDAO(this);
             it = new Intent(this, ApresentacaoRemedios.class);
             it.putExtra("Usuarios", usuarioDAO.getUsuario());
-            startActivity(it);
         } else {
-            if(edtNome.getText().toString().isEmpty())
-                Toast.makeText(this, "Insira um nome para cadastrar!", Toast.LENGTH_SHORT).show();
-            else {
-                Usuario user = new Usuario();
-                user.Nome = edtNome.getText().toString();
-                usuarioDAO.insert(user);
-            }
+            cadastrarUsuario();
+            it = verificaRemedioCadastrado();
         }
+        startActivity(it);
     }
 
-    public void verificaSeTemCadastro() {
+    private void verificaSeTemCadastro() {
         if (usuarioDAO.hasData()) {
-            Intent it = new Intent(this, ApresentacaoRemedios.class);
+            Intent it = verificaRemedioCadastrado();
             it.putExtra("Usuario", usuarioDAO.getUsuario());
             startActivity(it);
         }
         else
             btnIniciar.setText("Cadastrar usuário");
+    }
+
+    private Intent verificaRemedioCadastrado(){
+        Intent it;
+        RemedioDAO remedioDAO = new RemedioDAO(this);
+        if(remedioDAO.getRemedio().Id == 0)
+            it = new Intent(this, DadosDoRemedio.class);
+        else
+            it = new Intent(this, ApresentacaoRemedios.class);
+
+        return it;
+    }
+
+    private void cadastrarUsuario(){
+        if(edtNome.getText().toString().isEmpty())
+            Toast.makeText(this, "Insira um nome para cadastrar!", Toast.LENGTH_SHORT).show();
+        else {
+            Usuario user = new Usuario();
+            user.Nome = edtNome.getText().toString();
+            usuarioDAO.insert(user);
+        }
     }
 
     public void createNotificationChannel(){
