@@ -58,7 +58,7 @@
             android:id="@+id/rdbTimer"
             android:layout_width="177dp"
             android:layout_height="69dp"
-            android:text="Cronômetro"
+            android:text="Timer"
             android:textSize="24sp" />
     </RadioGroup>
 

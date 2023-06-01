@@ -1,9 +1,13 @@
 package com.example.medamigo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,7 +15,6 @@ import android.widget.TextView;
 import java.text.MessageFormat;
 
 import DAO.RemedioDAO;
-import Models.Remedio;
 
 public class ApresentacaoRemedios extends AppCompatActivity {
 
@@ -33,7 +36,44 @@ public class ApresentacaoRemedios extends AppCompatActivity {
 
         remedioDAO = new RemedioDAO(this);
 
-        txtRemedios.setText(MessageFormat.format("Nome: {0}\nIntervalo: {1}", remedioDAO.getRemedio().Nome, remedioDAO.getRemedio().Intervalo));
+        txtRemedios.setText(MessageFormat.format("Nome: {0}\nIntervalo: {1}h", remedioDAO.getRemedio().Nome, remedioDAO.getRemedio().Intervalo));
+    }
+
+
+    //Método para apresentação
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //Método com as ações dos botões localizados no canto superior direito da tela do app
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent it;
+        switch (item.getItemId()) {
+            case R.id.itemHistorico:
+                it = new Intent(this, HistoricoDoses.class);
+                startActivity(it);
+                return true;
+
+            case R.id.itemConfiguracoes:
+                 it = new Intent(this, DadosDoRemedio.class);
+                startActivity(it);
+                return true;
+
+            case R.id.itemSair:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void btnConfirmarDose(View view){
+        Intent it;
+        it = new Intent(this, ConfirmacaoDose.class);
+        startActivity(it);
+        this.finish();
     }
 
     public void btnAlterar(View view) {

@@ -27,7 +27,8 @@ public class ConnectionFactory extends SQLiteOpenHelper {
 
         String sql3 = "CREATE TABLE Historico(Id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "NomeDoRemedio VARCHAR(250)," +
-                "DataDaDose DateTime)";
+                "DataDaDose DateTime," +
+                "Atrasou VARCHAR(30))";
 
         db.execSQL(sql1);
         db.execSQL(sql2);

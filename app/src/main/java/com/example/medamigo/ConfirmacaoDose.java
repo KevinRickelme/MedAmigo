@@ -8,6 +8,7 @@ import static com.example.medamigo.Notificacao.setTimerRunning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import DAO.HistoricoDAO;
 import DAO.RemedioDAO;
@@ -33,7 +35,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
     private Button btnAlarme, btnConfirma, btnAdiar;
     private Intent it;
     private Usuario usuario;
-    private Remedio remedio;
+    //private Remedio remedio;
     private UsuarioDAO usuarioDAO;
     private RemedioDAO remedioDAO;
     private HistoricoDAO historicoDAO;
@@ -50,9 +52,10 @@ public class ConfirmacaoDose extends AppCompatActivity {
         txtNomeDoRemedio = findViewById(R.id.txtNomeDoRemedio);
         remedioDAO = new RemedioDAO(this);
         usuarioDAO = new UsuarioDAO(this);
-
-        remedio = remedioDAO.getRemedio();
+        historicoDAO = new HistoricoDAO(this);
         usuario = usuarioDAO.getUsuario();
+
+        txtNomeDoRemedio.setText(String.format("Remédio: %s", remedioDAO.getRemedio().Nome));
 
     }
 
@@ -78,16 +81,20 @@ public class ConfirmacaoDose extends AppCompatActivity {
         confirmaAcao.create().show();
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void confirmar(){
         historicoDAO = new HistoricoDAO(this);
         Historico historico = new Historico();
+        Remedio remedio = remedioDAO.getRemedio();
         historico.NomeDoRemedio = remedio.Nome;
-
-        historico.DataDaDose = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+        historico.DataDaDose = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR")).format(new Date());
+        historico.Atrasou = "Não";
+        historicoDAO.insert(historico);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Notificacao notificacao = new Notificacao(this, alarmManager);
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
         if (System.currentTimeMillis() > getEndTime())
             setTimerRunning(false);
         boolean timerRunning = isTimerRunning();
@@ -98,6 +105,10 @@ public class ConfirmacaoDose extends AppCompatActivity {
         setStartTimeInMillis(10000);
         setEndTime();
         notificacao.setNotificationAlarm();
+
+        it = new Intent(this, ApresentacaoRemedios.class);
+        startActivity(it);
+        finishAfterTransition();
     }
 
     public void btnAdiar(View view){
@@ -110,6 +121,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
         confirmaAdiar.create().show();
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void adiar(){
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         Notificacao notificacao = new Notificacao(this, alarmManager);
@@ -120,11 +132,23 @@ public class ConfirmacaoDose extends AppCompatActivity {
         if(timerRunning){
             notificacao.cancelNotificationAlarm();
         }
+
+        Historico historico = new Historico();
+        Remedio remedio = remedioDAO.getRemedio();
+        historico.NomeDoRemedio = remedio.Nome;
+        historico.DataDaDose = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR")).format(new Date());
+        historico.Atrasou = "Sim";
+        historicoDAO.insert(historico);
+
         //setStartTimeInMillis(30 * 1000 * 60); // -> 30 minutos
         //1 min - 60 seg
         //1 seg - 1000 milis
         setStartTimeInMillis(6000); //utilização somente para apresentação.
         setEndTime();
         notificacao.setNotificationAlarm();
+
+        it = new Intent(this, ApresentacaoRemedios.class);
+        startActivity(it);
+        finishAfterTransition();
     }
 }

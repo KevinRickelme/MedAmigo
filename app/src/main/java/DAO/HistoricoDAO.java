@@ -5,8 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Models.Historico;
-import Models.Remedio;
 import Util.ConnectionFactory;
 
 public class HistoricoDAO {
@@ -19,10 +21,11 @@ public class HistoricoDAO {
 
     //Método que insere os dados do usuario no banco de dados
     public long insert(Historico historico){
-        db = banco.getReadableDatabase();
+        db = banco.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("NomeDoRemedio", historico.NomeDoRemedio);
         values.put("DataDaDose", String.valueOf(historico.DataDaDose));
+        values.put("Atrasou", String.valueOf(historico.Atrasou));
 
         long result = db.insert(ConnectionFactory.TBL_HISTORICO, null, values);
         db.close();
@@ -30,26 +33,32 @@ public class HistoricoDAO {
     }
 
     //Retorna os dados da pessoa cadastrada no banco de dados
-    public Historico getHistorico(){
-        String[] campos = {"Id","NomeDoRemedio","DataDaDose"};
+    public List<Historico> getHistorico(){
+        String[] campos = {"Id","NomeDoRemedio","DataDaDose", "Atrasou"};
         db = banco.getReadableDatabase();
         Cursor cursor;
-        Historico historico = new Historico();
+        List<Historico> registros = new ArrayList<>();
 
         try {
-            cursor = db.query(ConnectionFactory.TBL_HISTORICO, campos, null, null,null,null,null,"1");
-            if(cursor != null && cursor.moveToLast()) {
-                historico.Id = cursor.getInt(cursor.getColumnIndexOrThrow("Id"));
-                historico.NomeDoRemedio = cursor.getString(cursor.getColumnIndexOrThrow("NomeDoRemedio"));
-                historico.DataDaDose = cursor.getString(cursor.getColumnIndexOrThrow("DataDaDose"));
+            cursor = db.query(ConnectionFactory.TBL_HISTORICO, campos, null, null,null,null,null,null);
+            if (cursor != null && cursor.moveToFirst()) {
+                while (cursor.moveToNext()){
+                    Historico historico = new Historico();
+                    historico.Id = cursor.getInt(cursor.getColumnIndexOrThrow("Id"));
+                    historico.NomeDoRemedio = cursor.getString(cursor.getColumnIndexOrThrow("NomeDoRemedio"));
+                    historico.DataDaDose = cursor.getString(cursor.getColumnIndexOrThrow("DataDaDose"));
+                    historico.Atrasou = cursor.getString(cursor.getColumnIndexOrThrow("Atrasou"));
+                    registros.add(historico);
+                }
             }
+
             db.close();
-            return historico;
+            return registros;
 
         }
         catch(Exception ex){
             db.close();
-            return historico;
+            return registros;
         }
     }
 }

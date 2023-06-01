@@ -22,13 +22,11 @@ public class Notificacao extends AppCompatActivity {
         this.alarmManager = alarmManager;
     }
 
-    //Método que define o horário que a notificação será exibida para o usuário
     public void setNotificationAlarm() {
         Intent it = new Intent(context, NotificacaoReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 context, 0, it, 0);
 
-        //AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, endTime,
                 pendingIntent);
 
@@ -36,15 +34,12 @@ public class Notificacao extends AppCompatActivity {
         timerRunning = true;
     }
 
-    //Método que cancela a notificação que deveria ser exibida
     public void cancelNotificationAlarm(){
         Intent it = new Intent(context, NotificacaoReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 context, 0, it, 0);
-        //AlarmManager  alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         timerRunning = false;
-        //Toast.makeText(context, "Alarme cancelado.", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -64,9 +59,7 @@ public class Notificacao extends AppCompatActivity {
 
 
     //Setters
-    public static void setStartTimeInMillis(long _startTimeInMillis) {
-        startTimeInMillis = _startTimeInMillis;
-    }
+    public static void setStartTimeInMillis(long _startTimeInMillis) { startTimeInMillis = _startTimeInMillis; }
 
     public static void setEndTime() {
         endTime = System.currentTimeMillis() + startTimeInMillis;

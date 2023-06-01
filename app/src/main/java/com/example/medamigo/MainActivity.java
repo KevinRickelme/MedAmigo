@@ -1,5 +1,6 @@
 package com.example.medamigo;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.NotificationChannel;
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         if(remedioDAO.getRemedio().Id == 0)
             it = new Intent(this, DadosDoRemedio.class);
         else
-            it = new Intent(this, ApresentacaoRemedios.class);
+            it = new Intent(this, ConfirmacaoDose.class);
 
         return it;
     }
@@ -107,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = "Lembrete para tomar o remédio";
             String description = "Canal para notificar quando tomar o remédio";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("MedAmigo", name, importance);
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("MedAmigo", name, NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription(description);
 
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

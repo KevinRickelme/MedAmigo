@@ -54,12 +54,21 @@ public class DadosDoRemedio extends AppCompatActivity {
     }
 
     public void btnCadastrar(View view) {
+        boolean a = edtIntervalo.getText().toString().isEmpty();
+        String b = edtIntervalo.getText().toString();
 
-        if(edtNomeRemedio.getText().toString().isEmpty() && edtIntervalo.getText().toString().isEmpty()) {
+        boolean c = edtNomeRemedio.getText().toString().isEmpty();
+        String d = edtNomeRemedio.getText().toString();
+
+        if(edtNomeRemedio.getText().toString().isEmpty() || edtIntervalo.getText().toString().isEmpty()) {
             Toast.makeText(this, "Preencha todos os campos!!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        if(Integer.parseInt(edtIntervalo.getText().toString()) < 1){
+            Toast.makeText(this, "Preencha o intervalo corretamente!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Remedio remedio = new Remedio();
         remedio.Nome = edtNomeRemedio.getText().toString();

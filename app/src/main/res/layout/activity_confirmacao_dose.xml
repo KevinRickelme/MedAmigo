@@ -9,7 +9,7 @@
     <View
         android:id="@+id/view2"
         android:layout_width="417dp"
-        android:layout_height="100dp"
+        android:layout_height="65dp"
         android:background="@color/design_default_color_primary_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +61,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.361" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeDoRemedio"
+        app:layout_constraintVertical_bias="0.054" />
 
     <Button
         android:id="@+id/btnAdiar"
@@ -74,10 +74,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.805"
+        app:layout_constraintHorizontal_bias="0.812"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.361" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNomeDoRemedio"
+        app:layout_constraintVertical_bias="0.054" />
 
     <TextView
         android:id="@+id/txtGenerico"
