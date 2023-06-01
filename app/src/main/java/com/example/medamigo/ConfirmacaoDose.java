@@ -6,6 +6,7 @@ import static com.example.medamigo.Notificacao.setEndTime;
 import static com.example.medamigo.Notificacao.setStartTimeInMillis;
 import static com.example.medamigo.Notificacao.setTimerRunning;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -14,7 +15,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -32,7 +36,7 @@ import Models.Usuario;
 
 public class ConfirmacaoDose extends AppCompatActivity {
 
-    private Button btnAlarme, btnConfirma, btnAdiar;
+    private Button btnAlarmeConfirmacao, btnConfirma, btnAdiar;
     private Intent it;
     private Usuario usuario;
     //private Remedio remedio;
@@ -46,7 +50,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacao_dose);
 
-        btnAlarme = findViewById(R.id.btnAlarme);
+        btnAlarmeConfirmacao = findViewById(R.id.btnAlarmeConfirmacao);
         btnConfirma = findViewById(R.id.btnConfirma);
         btnAdiar = findViewById(R.id.btnAdiar);
         txtNomeDoRemedio = findViewById(R.id.txtNomeDoRemedio);
@@ -56,7 +60,34 @@ public class ConfirmacaoDose extends AppCompatActivity {
         usuario = usuarioDAO.getUsuario();
 
         txtNomeDoRemedio.setText(String.format("Remédio: %s", remedioDAO.getRemedio().Nome));
+    }
 
+
+    //Método para apresentação
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    //Método com as ações dos botões localizados no canto superior direito da tela do app
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent it;
+        switch (item.getItemId()) {
+            case R.id.itemHistorico:
+                it = new Intent(this, HistoricoDoses.class);
+                startActivity(it);
+                return true;
+
+            case R.id.itemConfiguracoes:
+                return true;
+
+            case R.id.itemSair:
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void abrirLista(View view){
@@ -104,7 +135,9 @@ public class ConfirmacaoDose extends AppCompatActivity {
 
         setStartTimeInMillis(10000);
         setEndTime();
-        notificacao.setNotificationAlarm();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificacao.setNotificationAlarm();
+        }
 
         it = new Intent(this, ApresentacaoRemedios.class);
         startActivity(it);
@@ -145,10 +178,20 @@ public class ConfirmacaoDose extends AppCompatActivity {
         //1 seg - 1000 milis
         setStartTimeInMillis(6000); //utilização somente para apresentação.
         setEndTime();
-        notificacao.setNotificationAlarm();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificacao.setNotificationAlarm();
+        }
 
         it = new Intent(this, ApresentacaoRemedios.class);
         startActivity(it);
         finishAfterTransition();
+    }
+
+
+    public void btnAlarmeConfirmacao(View view) {
+        Intent it;
+        it = new Intent(this, Alarmes.class);
+        startActivity(it);
+        this.finish();
     }
 }

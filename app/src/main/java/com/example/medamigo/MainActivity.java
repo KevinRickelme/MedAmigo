@@ -1,13 +1,17 @@
 package com.example.medamigo;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +52,31 @@ public class MainActivity extends AppCompatActivity {
             usuario.Nome = String.valueOf(edtNome.getText());
             return false;
         });
+
+    }
+
+    private static final int PERMISSION_REQUEST_CODE = 123;
+
+    private void requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // Verifica se a permissão já foi concedida
+            if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
+                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
+                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
+                intent.putExtra(Settings.EXTRA_CHANNEL_ID, "MedAmigo");
+                startActivity(intent);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            // Verifica se a permissão foi concedida
+            if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED)
+                Toast.makeText(this, "Não será possível notificar!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     //Método que é executado sempre que o usuário volta para a tela inicial

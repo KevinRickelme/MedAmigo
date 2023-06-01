@@ -19,12 +19,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/btnAlarme"
+        android:id="@+id/btnAlarmeConfirmacao"
         android:layout_width="331dp"
         android:layout_height="60dp"
         android:layout_marginBottom="64dp"
         android:backgroundTint="@color/design_default_color_primary_dark"
-        android:onClick="btnAlarme"
+        android:onClick="btnAlarmeConfirmacao"
         android:text="Configurar alarme"
         android:textColorLink="@color/teal_200"
         android:textSize="20sp"

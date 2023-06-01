@@ -4,8 +4,10 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Notificacao extends AppCompatActivity {
@@ -22,10 +24,13 @@ public class Notificacao extends AppCompatActivity {
         this.alarmManager = alarmManager;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     public void setNotificationAlarm() {
         Intent it = new Intent(context, NotificacaoReceiver.class);
+
+
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                context, 0, it, 0);
+                context, 0, it, PendingIntent.FLAG_MUTABLE);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, endTime,
                 pendingIntent);

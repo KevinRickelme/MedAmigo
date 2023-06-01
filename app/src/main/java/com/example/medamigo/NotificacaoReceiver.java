@@ -6,7 +6,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -15,6 +17,7 @@ public class NotificacaoReceiver extends BroadcastReceiver {
     private static final String CHANNEL_ID = "MedAmigo";
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onReceive(Context context, Intent intent) {
 
@@ -24,7 +27,7 @@ public class NotificacaoReceiver extends BroadcastReceiver {
         Intent activityIntent = new Intent(context, MainActivity.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(context,
-                0, activityIntent, 0);
+                0, activityIntent, PendingIntent.FLAG_MUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_alarm_24) //Definir o ícone da notificação
