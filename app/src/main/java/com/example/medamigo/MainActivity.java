@@ -1,8 +1,12 @@
 package com.example.medamigo;
 
+import static android.Manifest.permission.POST_NOTIFICATIONS;
+
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.app.NotificationChannel;
@@ -28,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnIniciar;
     private Usuario usuario;
     private UsuarioDAO usuarioDAO;
+    private ActivityResultLauncher<Intent> notificationPermissionLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        requestNotificationPermission();
+
     }
 
     private static final int PERMISSION_REQUEST_CODE = 123;
@@ -61,10 +68,7 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Verifica se a permissão já foi concedida
             if (!NotificationManagerCompat.from(this).areNotificationsEnabled()) {
-                Intent intent = new Intent(Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS);
-                intent.putExtra(Settings.EXTRA_APP_PACKAGE, getPackageName());
-                intent.putExtra(Settings.EXTRA_CHANNEL_ID, "MedAmigo");
-                startActivity(intent);
+                ActivityCompat.requestPermissions(this, new String[]{POST_NOTIFICATIONS}, 1);;
             }
         }
     }
