@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         createNotificationChannel();
         usuarioDAO = new UsuarioDAO(this);
 
-        btnIniciar.setText("Ver meus remédios");
+        btnIniciar.setText(getString(R.string.btnVerMeusRemedios));
 
         verificaSeTemCadastro();
         verificaRemedioCadastrado();
@@ -88,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         if (!usuarioDAO.hasData()) {
-            btnIniciar.setText("Cadastrar usuário");
+            btnIniciar.setText(getString(R.string.btnCadastrarUsuario));
         } else {
             edtNome.setVisibility(View.GONE);
-            btnIniciar.setText("Ver meus remédios");
+            btnIniciar.setText(getString(R.string.btnVerMeusRemedios));
         }
         btnIniciar.setEnabled(true);
     }
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
         }
         else
-            btnIniciar.setText("Cadastrar usuário");
+            btnIniciar.setText(getString(R.string.btnCadastrarUsuario));
     }
 
     private Intent verificaRemedioCadastrado(){
@@ -125,14 +125,14 @@ public class MainActivity extends AppCompatActivity {
         if(remedioDAO.getRemedio().Id == 0)
             it = new Intent(this, DadosDoRemedio.class);
         else
-            it = new Intent(this, ConfirmacaoDose.class);
+            it = new Intent(this, ApresentacaoRemedios.class);
 
         return it;
     }
 
     private void cadastrarUsuario(){
         if(edtNome.getText().toString().isEmpty())
-            Toast.makeText(this, "Insira um nome para cadastrar!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.ErroNomeInvalido), Toast.LENGTH_SHORT).show();
         else {
             Usuario user = new Usuario();
             user.Nome = edtNome.getText().toString();
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createNotificationChannel(){
-            CharSequence name = "Lembrete para tomar o remédio";
+            CharSequence name = getString(R.string.notificationTitle);
             String description = "Canal para notificar quando tomar o remédio";
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {

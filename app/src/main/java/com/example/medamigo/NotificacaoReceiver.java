@@ -21,10 +21,10 @@ public class NotificacaoReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        String message = "Hora de tomar o remédio!!!";
-        String title = "Atenção!";
+        String message = context.getString(R.string.HoraDeTomarRemedio);
+        String title = context.getString(R.string.Atencao);
 
-        Intent activityIntent = new Intent(context, MainActivity.class);
+        Intent activityIntent = new Intent(context, ConfirmacaoDose.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(context,
                 0, activityIntent, PendingIntent.FLAG_MUTABLE);

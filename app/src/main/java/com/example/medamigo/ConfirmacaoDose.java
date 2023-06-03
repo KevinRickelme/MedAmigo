@@ -59,7 +59,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
         historicoDAO = new HistoricoDAO(this);
         usuario = usuarioDAO.getUsuario();
 
-        txtNomeDoRemedio.setText(String.format("Remédio: %s", remedioDAO.getRemedio().Nome));
+        txtNomeDoRemedio.setText(String.format(getString(R.string.Remedio)+" %s", remedioDAO.getRemedio().Nome));
     }
 
 
@@ -99,16 +99,16 @@ public class ConfirmacaoDose extends AppCompatActivity {
     public void btnConfirma(View view) {
 
         AlertDialog.Builder confirmaAcao = new AlertDialog.Builder(this);
-        confirmaAcao.setTitle("Atenção !!")
-                .setMessage("Você deseja confirmar que tomou sua dose?")
+        confirmaAcao.setTitle(getString(R.string.Atencao))
+                .setMessage(getString(R.string.ConfirmarDose))
                 .setCancelable(false)
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.Sim), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         confirmar();
                     }
                 });
-        confirmaAcao.setNegativeButton("Não", null);
+        confirmaAcao.setNegativeButton(getString(R.string.Nao), null);
         confirmaAcao.create().show();
     }
 
@@ -119,7 +119,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
         Remedio remedio = remedioDAO.getRemedio();
         historico.NomeDoRemedio = remedio.Nome;
         historico.DataDaDose = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR")).format(new Date());
-        historico.Atrasou = "Não";
+        historico.Atrasou = getString(R.string.Nao);
         historicoDAO.insert(historico);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -146,11 +146,11 @@ public class ConfirmacaoDose extends AppCompatActivity {
 
     public void btnAdiar(View view){
         AlertDialog.Builder confirmaAdiar = new AlertDialog.Builder(this);
-        confirmaAdiar.setTitle("Atenção !!")
-                .setMessage("Tem certeza que deseja adiar a notificação em 30 minutos?")
+        confirmaAdiar.setTitle(getString(R.string.Atencao))
+                .setMessage(getString(R.string.ConfirmarAdiar))
                 .setCancelable(false)
-                .setPositiveButton("Sim", (dialog, which) -> adiar());
-        confirmaAdiar.setNegativeButton("Não", null);
+                .setPositiveButton(getString(R.string.Sim), (dialog, which) -> adiar());
+        confirmaAdiar.setNegativeButton(getString(R.string.Nao), null);
         confirmaAdiar.create().show();
     }
 

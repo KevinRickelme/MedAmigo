@@ -36,7 +36,7 @@ public class ApresentacaoRemedios extends AppCompatActivity {
 
         remedioDAO = new RemedioDAO(this);
 
-        txtRemedios.setText(MessageFormat.format("Nome: {0}\nIntervalo: {1}h", remedioDAO.getRemedio().Nome, remedioDAO.getRemedio().Intervalo));
+        txtRemedios.setText(MessageFormat.format(getString(R.string.NomeUsuario)+" {0}\n"+getString(R.string.Intervalo)+ " {1}h", remedioDAO.getRemedio().Nome, remedioDAO.getRemedio().Intervalo));
     }
 
 

@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">MedAmigo</string>
+    <string name="Historico">Histórico</string>
+    <string name="AlterarRemedio">Alterar Remédio</string>
+    <string name="Sair">Sair</string>
+    <string name="ListaRemedios">Sua lista de remédios:</string>
+    <string name="NomeUsuario">Nome: </string>
+    <string name="Intervalo">Intervalo: </string>
+    <string name="btnConfirmaDose">CONFIRMAR DOSE</string>
+    <string name="btnAlterarRemedio">ALTERAR REMÉDIO</string>
+    <string name="btnConfigurarAlarme">CONFIGURAR ALARME</string>
+    <string name="btnConfirmar">CONFIRMAR</string>
+    <string name="btnAdiar">ADIAR</string>
+    <string name="BoasVindas">Bem-vindo(a)!</string>
+    <string name="btnVerMeusRemedios">VER MEUS REMÉDIOS</string>
+    <string name="ConfirmeSeTomouADose">Confirme se tomou a dose: </string>
+    <string name="Remedio">Medicine: </string>
+    <string name="Ola">Olá, </string>
+    <string name="InformeRemedio">Informe o remédio que toma: </string>
+    <string name="InformeIntervalo">Informe o intervalo (em horas) entre as doses: </string>
+    <string name="btnCadastrar">CADASTRAR</string>
+    <string name="inputCadastrarUsuario">Digite o seu nome aqui</string>
+    <string name="btnCadastrarUsuario">CADASTRAR USUÁRIO</string>
+    <string name="ErroNomeInvalido">Insira um nome para cadastrar!</string>
+    <string name="notificationTitle">Lembrete para tomar o remédio</string>
+    <string name="inputRemedio">Digite aqui o nome do remédio</string>
+    <string name="inputIntervalo">Digite aqui o intervalo em horas</string>
+    <string name="EscolhaComoAvisar">Escolha como deseja ser avisado:</string>
+    <string name="Alarme">Alarme</string>
+    <string name="inputHora">Digite a hora aqui</string>
+    <string name="inputMinutos">Digite os minutos aqui</string>
+    <string name="btnProgramarAlarme">PROGRAMAR ALARME</string>
+    <string name="Atencao">Atenção !!!</string>
+    <string name="ConfirmarDose">Você deseja confirmar que tomou sua dose?</string>
+    <string name="ConfirmarAdiar">Tem certeza que deseja adiar a notificação em 30 minutos?</string>
+    <string name="Sim">Sim</string>
+    <string name="Nao">Não</string>
+    <string name="AlarmeDefinido">Alarme Definido</string>
+    <string name="HoraDeTomarRemedio">Hora de Tomar o Remédio</string>
+
+</resources>

@@ -6,7 +6,7 @@
         android:title="@string/Historico" />
     <item
         android:id="@+id/itemConfiguracoes"
-        android:title="@string/Configuracoes" />
+        android:title="@string/AlterarRemedio" />
     <item
         android:title="@string/Sair"
         android:id="@+id/itemSair"/>

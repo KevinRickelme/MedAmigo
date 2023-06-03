@@ -1,7 +1,43 @@
 <resources>
-    <string name="app_name">MedAmigo</string>
-    <string name="Historico">Histórico</string>
-    <string name="Configuracoes">Configurações</string>
-    <string name="Sair">Sair</string>
+    <string name="app_name">MedFriend</string>
+    <string name="Historico">History</string>
+    <string name="AlterarRemedio">Change Medication</string>
+    <string name="Sair">Exit</string>
+    <string name="ListaRemedios">Your medication list:</string>
+    <string name="NomeUsuario">Name: </string>
+    <string name="Intervalo">Interval: </string>
+    <string name="btnConfirmaDose">CONFIRM MED DOSE</string>
+    <string name="btnAlterarRemedio">Change Medication</string>
+    <string name="btnConfigurarAlarme">CONFIGURE ALARM</string>
+    <string name="btnConfirmar">CONFIRM</string>
+    <string name="btnAdiar">RESCHEDULE</string>
+    <string name="BoasVindas">Your Welcome!</string>
+    <string name="btnVerMeusRemedios">Show My Medicines</string>
+    <string name="ConfirmeSeTomouADose">Confirm that you medicated yourself: </string>
+    <string name="Remedio">Medicine: </string>
+    <string name="Ola">Hello, </string>
+    <string name="InformeRemedio">Medicine Name is: </string>
+    <string name="InformeIntervalo">The interval in hours between doses is: </string>
+    <string name="btnCadastrar">CREATE</string>
+    <string name="inputCadastrarUsuario">Your name here</string>
+    <string name="btnCadastrarUsuario">CREATE NEW USER</string>
+    <string name="ErroNomeInvalido">Insert a name to continue!</string>
+    <string name="notificationTitle">Reminder to take your medicine</string>
+    <string name="inputRemedio">Name of Medicine...</string>
+    <string name="inputIntervalo">Interval between doses...</string>
+    <string name="EscolhaComoAvisar">How can by we remind you?</string>
+    <string name="Alarme">Alarm</string>
+    <string name="inputHora">Insert hours here</string>
+    <string name="inputMinutos">Insert minutes here</string>
+    <string name="btnProgramarAlarme">Create new Alarm</string>
+    <string name="Atencao">Atention !!!</string>
+    <string name="ConfirmarDose">Do you want to confirm that you take your medicine?</string>
+    <string name="ConfirmarAdiar">Do you want to reschedule the Alarm Notification in 30 minutes?</string>
+    <string name="Sim">Yes</string>
+    <string name="Nao">No</string>
+    <string name="AlarmeDefinido">Alarm Set</string>
+    <string name="HoraDeTomarRemedio">Medicine time!</string>
+
+
 
 </resources>

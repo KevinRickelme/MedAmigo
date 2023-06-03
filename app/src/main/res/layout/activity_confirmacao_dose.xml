@@ -25,7 +25,7 @@
         android:layout_marginBottom="64dp"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:onClick="btnAlarmeConfirmacao"
-        android:text="Configurar alarme"
+        android:text="@string/btnConfigurarAlarme"
         android:textColorLink="@color/teal_200"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,14 +55,14 @@
         android:layout_height="56dp"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:onClick="btnConfirma"
-        android:text="Confimar"
+        android:text="@string/btnConfirmar"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeDoRemedio"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <Button
         android:id="@+id/btnAdiar"
@@ -70,21 +70,21 @@
         android:layout_height="56dp"
         android:backgroundTint="@color/design_default_color_primary_dark"
         android:onClick="btnAdiar"
-        android:text="Adiar"
+        android:text="@string/btnAdiar"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeDoRemedio"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <TextView
         android:id="@+id/txtGenerico"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Confirme se tomou a dose:"
+        android:text="@string/ConfirmeSeTomouADose"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -101,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Remédio: "
+        android:text="@string/Remedio"
         android:textAlignment="center"
         android:textColor="@color/purple_200"
         android:textSize="30sp"

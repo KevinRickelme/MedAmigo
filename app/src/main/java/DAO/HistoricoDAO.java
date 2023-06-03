@@ -42,14 +42,14 @@ public class HistoricoDAO {
         try {
             cursor = db.query(ConnectionFactory.TBL_HISTORICO, campos, null, null,null,null,null,null);
             if (cursor != null && cursor.moveToFirst()) {
-                while (cursor.moveToNext()){
+                do{
                     Historico historico = new Historico();
                     historico.Id = cursor.getInt(cursor.getColumnIndexOrThrow("Id"));
                     historico.NomeDoRemedio = cursor.getString(cursor.getColumnIndexOrThrow("NomeDoRemedio"));
                     historico.DataDaDose = cursor.getString(cursor.getColumnIndexOrThrow("DataDaDose"));
                     historico.Atrasou = cursor.getString(cursor.getColumnIndexOrThrow("Atrasou"));
                     registros.add(historico);
-                }
+                }while (cursor.moveToNext());
             }
 
             db.close();

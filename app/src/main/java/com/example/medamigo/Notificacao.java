@@ -35,7 +35,7 @@ public class Notificacao extends AppCompatActivity {
         alarmManager.set(AlarmManager.RTC_WAKEUP, endTime,
                 pendingIntent);
 
-        Toast.makeText(context, "Alarme definido.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, context.getString(R.string.AlarmeDefinido), Toast.LENGTH_SHORT).show();
         timerRunning = true;
     }
 
