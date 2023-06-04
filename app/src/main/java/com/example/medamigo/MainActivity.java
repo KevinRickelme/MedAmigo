@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             // Verifica se a permissão foi concedida
             if (grantResults.length > 0 && grantResults[0] != PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this, "Não será possível notificar!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.AvisoPermissao), Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -3,8 +3,11 @@ package com.example.medamigo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import DAO.HistoricoDAO;
@@ -21,7 +24,6 @@ public class HistoricoDoses extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_historico_doses);
 
-        txtHistorico = findViewById(R.id.txtHistorico);
         historicoDAO = new HistoricoDAO(this);
 
         apresentarHistorico();
@@ -30,10 +32,11 @@ public class HistoricoDoses extends AppCompatActivity {
     private void apresentarHistorico(){
         List<Historico> registros = historicoDAO.getHistorico();
 
-        for(Historico historico:registros){
-            txtHistorico.setText(String.format("%s\nRemédio: %s\nData: %s\nAtrasou: %s", txtHistorico.getText().toString(), historico.NomeDoRemedio, historico.DataDaDose, historico.Atrasou));
-            txtHistorico.setText(String.format("%s\n-----------",txtHistorico.getText().toString()));
-        }
+        ListView listView = findViewById(R.id.customListView);
+        CustomAdapter customAdapter = new CustomAdapter(HistoricoDoses.this, registros);
+
+        listView.setAdapter(customAdapter);
+
 
     }
 }

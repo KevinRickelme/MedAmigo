@@ -4,36 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#000000"
+    android:backgroundTintMode="add"
     tools:context=".HistoricoDoses">
 
-    <ScrollView
-        android:layout_width="338dp"
-        android:layout_height="668dp"
-        android:foregroundGravity="center_vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="32dp">
 
-        <LinearLayout
+        <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:id="@+id/customListView"
+            android:divider="#fff"/>
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtHistorico"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:foregroundGravity="center_vertical"
-                android:text="@string/Historico"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.123" />
-        </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,18 +27,18 @@ public class NotificacaoReceiver extends BroadcastReceiver {
         Intent activityIntent = new Intent(context, ConfirmacaoDose.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(context,
-                0, activityIntent, PendingIntent.FLAG_MUTABLE);
+                0, activityIntent, PendingIntent.FLAG_IMMUTABLE);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_baseline_alarm_24) //Definir o ícone da notificação
                 .setContentTitle(title) //Definir o título da notificação
                 .setContentText(message) //Definir o conteúdo no corpo da notificação
-                .setPriority(NotificationCompat.PRIORITY_HIGH) //Definir a prioridade da notificação
+                .setPriority(NotificationCompat.PRIORITY_MAX) //Definir a prioridade da notificação
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .setAutoCancel(true) //Fazer com que a notificação seja fechada após o evento de click nela e a execução da tarefa determinada
-                .setOnlyAlertOnce(true) //A notificação só irá notificar uma vez
-                .setContentIntent(contentIntent); //Ação que a notificação irá fazer quando for clicada
-
+                .setOnlyAlertOnce(true)//A notificação só irá notificar uma vez
+                .setContentIntent(contentIntent)//Ação que a notificação irá fazer quando for clicada
+                .setOngoing(true);
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(1, builder.build());
     }

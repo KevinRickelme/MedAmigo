@@ -40,7 +40,7 @@ public class HistoricoDAO {
         List<Historico> registros = new ArrayList<>();
 
         try {
-            cursor = db.query(ConnectionFactory.TBL_HISTORICO, campos, null, null,null,null,null,null);
+            cursor = db.query(ConnectionFactory.TBL_HISTORICO, campos, null, null,null,null,"DataDaDose DESC",null);
             if (cursor != null && cursor.moveToFirst()) {
                 do{
                     Historico historico = new Historico();

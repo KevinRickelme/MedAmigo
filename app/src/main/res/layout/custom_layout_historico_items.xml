@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="6dp"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textViewRemedio"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:layout_weight="1"
+            android:text="Nome do Remédio"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif"
+            android:textFontWeight="600"
+            android:background="#fff"/>
+
+        <ImageView
+            android:id="@+id/imgPill"
+            android:layout_width="130dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            tools:srcCompat="@drawable/pilula"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/txtData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="35dp"
+            android:layout_weight="1"
+            android:text="@string/Data" />
+
+        <TextView
+            android:id="@+id/textViewData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="03/06/2023 20:54:50"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="35dp"/>
+
+        <TextView
+            android:id="@+id/txtAtrasou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="70dp"
+            android:layout_weight="1"
+            android:text="@string/Adiar" />
+
+        <TextView
+            android:id="@+id/textViewAtrasou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="Não"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="70dp"/>
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

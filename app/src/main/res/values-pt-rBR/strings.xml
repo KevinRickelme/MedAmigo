@@ -37,5 +37,10 @@
     <string name="Nao">Não</string>
     <string name="AlarmeDefinido">Alarme Definido</string>
     <string name="HoraDeTomarRemedio">Hora de Tomar o Remédio</string>
+    <string name="Data">Data</string>
+    <string name="Adiar">Adiado?</string>
+    <string name="AvisoPermissao">Não será possível notificar!</string>
+    <string name="AvisoCampos">Preencha todos os campos!</string>
+    <string name="AvisoIntervalo">Preencha o intervalo corretamente!</string>
 
 </resources>

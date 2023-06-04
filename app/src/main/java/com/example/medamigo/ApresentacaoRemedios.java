@@ -69,12 +69,12 @@ public class ApresentacaoRemedios extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnConfirmarDose(View view){
+    /*public void btnConfirmarDose(View view){
         Intent it;
         it = new Intent(this, ConfirmacaoDose.class);
         startActivity(it);
         this.finish();
-    }
+    }*/
 
     public void btnAlterar(View view) {
         Intent it;

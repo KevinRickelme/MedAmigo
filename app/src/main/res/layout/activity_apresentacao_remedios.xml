@@ -67,23 +67,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
-            android:id="@+id/btnConfirmarDose"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="0dp"
-            android:backgroundTint="@color/design_default_color_primary_dark"
-            android:onClick="btnConfirmarDose"
-            android:text="@string/btnConfirmaDose"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPraticaExercicio" />
-
-        <Button
             android:id="@+id/btnAlterar"
             android:layout_width="333dp"
             android:layout_height="56dp"

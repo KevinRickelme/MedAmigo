@@ -36,7 +36,12 @@
     <string name="Sim">Yes</string>
     <string name="Nao">No</string>
     <string name="AlarmeDefinido">Alarm Set</string>
-    <string name="HoraDeTomarRemedio">Medicine time!</string>
+    <string name="HoraDeTomarRemedio">Medicine Time!</string>
+    <string name="Data">Date:</string>
+    <string name="Adiar">Delayed?</string>
+    <string name="AvisoPermissao">Without Notification Permission, we can\'t notify you!</string>
+    <string name="AvisoCampos">Fill all Fields!</string>
+    <string name="AvisoIntervalo">Fill the Interval Field Correctly!</string>
 
 
 

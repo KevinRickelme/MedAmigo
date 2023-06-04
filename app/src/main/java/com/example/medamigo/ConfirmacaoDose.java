@@ -170,7 +170,7 @@ public class ConfirmacaoDose extends AppCompatActivity {
         Remedio remedio = remedioDAO.getRemedio();
         historico.NomeDoRemedio = remedio.Nome;
         historico.DataDaDose = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR")).format(new Date());
-        historico.Atrasou = "Sim";
+        historico.Atrasou = getString(R.string.Sim);
         historicoDAO.insert(historico);
 
         //setStartTimeInMillis(30 * 1000 * 60); // -> 30 minutos

@@ -1,10 +1,19 @@
 package com.example.medamigo;
 
+import static com.example.medamigo.Notificacao.getEndTime;
+import static com.example.medamigo.Notificacao.isTimerRunning;
+import static com.example.medamigo.Notificacao.setEndTime;
+import static com.example.medamigo.Notificacao.setStartTimeInMillis;
+import static com.example.medamigo.Notificacao.setTimerRunning;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -48,7 +57,7 @@ public class DadosDoRemedio extends AppCompatActivity {
 
         if(remedio == null)
             remedio = remedioDAO.getRemedio();
-        txtNome.setText("Olá, " + usuario.Nome + "!");
+        txtNome.setText(txtNome.getText() +" " + usuario.Nome + "!");
 
         if(remedio.Id != 0){
             edtNomeRemedio.setText(remedio.Nome);
@@ -65,12 +74,12 @@ public class DadosDoRemedio extends AppCompatActivity {
         String d = edtNomeRemedio.getText().toString();
 
         if(edtNomeRemedio.getText().toString().isEmpty() || edtIntervalo.getText().toString().isEmpty()) {
-            Toast.makeText(this, "Preencha todos os campos!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.AvisoCampos), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if(Integer.parseInt(edtIntervalo.getText().toString()) < 1){
-            Toast.makeText(this, "Preencha o intervalo corretamente!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.AvisoIntervalo), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -83,6 +92,24 @@ public class DadosDoRemedio extends AppCompatActivity {
             resultado= remedioDAO.update(remedio);
         else
             resultado = remedioDAO.insert(remedio);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Notificacao notificacao = new Notificacao(this, alarmManager);
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+
+        if (System.currentTimeMillis() > getEndTime())
+            setTimerRunning(false);
+        boolean timerRunning = isTimerRunning();
+        if(timerRunning){
+            notificacao.cancelNotificationAlarm();
+        }
+
+        setStartTimeInMillis(10000);
+        setEndTime();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            notificacao.setNotificationAlarm();
+        }
+
 
         if(resultado != -1){
             it = new Intent(this, ApresentacaoRemedios.class);
